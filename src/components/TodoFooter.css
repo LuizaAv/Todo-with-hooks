@@ -1,0 +1,22 @@
+
+
+
+.footerContainer {
+    height: 40px;
+    width: 38.9vw;
+    margin-left: 20px;
+    border-radius: 2px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lengthSpan {
+    color: #de87ad;
+    margin-left: 10px;
+}
+
+.deleteBtn {
+    background-color: #de87ad;
+    margin: 3px
+}

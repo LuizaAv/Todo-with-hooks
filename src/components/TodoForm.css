@@ -1,0 +1,25 @@
+
+
+
+form{
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.newTodoInput{
+    height: 40px;
+    width: 35vw;
+    border:none;
+}
+
+.newTodoInput:focus{
+    outline: none;
+}
+
+.addButton{
+    height: 40px;
+    width: 50px;
+    margin-left: 5px;
+    background-color: black;
+    color: #de87ad;
+}

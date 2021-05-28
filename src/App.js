@@ -1,24 +1,75 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import TodoFooter from "./components/TodoFooter";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
+
+import "./App.css"
+
 
 function App() {
+  const [todos, setTodos] = useState([
+    {
+      id: Math.random(), 
+      value: "Learn JS",
+      isCompleted: false
+    },
+    {
+      id: Math.random(), 
+      value: "Learn CSS",
+      isCompleted: false
+    },
+    {
+      id: Math.random(), 
+      value: "Learn React",
+      isCompleted: false
+    }
+  ])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <h1>Todo List</h1>
+        <TodoForm addTodo = {(newTodo) => {
+          setTodos([
+            ...todos,
+            {
+              id: Math.random(),
+              value: newTodo,
+              isCompleted: false
+            }
+          ])
+        }}/>
+        <TodoList 
+        todos={todos}
+        onDelete={
+          (todo) => {
+            setTodos(todos.filter((item) => item.id !== todo.id))
+          }
+        }
+
+        onChange={
+          (newTodo) => {
+            setTodos(todos.map((todo)=>{
+              if(todo.id ===newTodo.id){
+                return newTodo
+              }
+              return todo
+            }))
+          }
+        }
+        />
+        <TodoFooter 
+        todos={todos}
+        clearCompleted = {() => {
+          setTodos(todos.filter(todo => !todo.isCompleted))
+        }}
+
+        allItems = {
+          () => {
+            setTodos(todos.forEach((todo) => console.log(todo)))
+          }
+        }
+        />
+      </div>
   );
 }
 
